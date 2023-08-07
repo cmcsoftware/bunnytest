@@ -8,6 +8,7 @@ steps:
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', '$SERVICE-NAME', '--image', 'gcr.io/$PROJECT_ID/bunnytest', '--region', 'REGION']
+    args: ['run', 'deploy',  'bunnytest-${SHORT_SHA}', '--image', 'gcr.io/$PROJECT_ID/bunnytest',  '--region', 'us-central1', '--platform', 'managed',
+           '--allow-unauthenticated']
 images:
   - 'gcr.io/$PROJECT_ID/bunnytest'
